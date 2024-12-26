@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ButtonProps from './Types/ButtonProps';
 import styled from 'styled-components';
 
 const Button = ({ onClick, label } : ButtonProps) => {
-  const [isNumeric, setIsNumeric] = useState(false);
-  const [isC, setIsC] = useState(false);
 
-  const size = '3.3em';
+  const size : string = '3.3em';
+
+  let isNumeric : boolean = false;
+  let isC : boolean = false;
 
   const StyledButton = styled.button`
     background-color: ${() => isNumeric ? 'DarkSlateGray' : 'Gray'};
@@ -19,11 +20,11 @@ const Button = ({ onClick, label } : ButtonProps) => {
 
   // Check if the label is numeric
   if (!isNumeric && !isNaN(Number(label))) {
-    setIsNumeric(true);
+    isNumeric = true;
   }
 
   if (!isC && String(label) === 'C') {
-    setIsC(true);
+    isC = true;
   }
 
   return (

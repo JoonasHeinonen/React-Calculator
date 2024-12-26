@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledBackground = styled.p`
+const StyledBackground = styled.div`
   display: grid;
   background-color: #132020;
   min-width: 20em;

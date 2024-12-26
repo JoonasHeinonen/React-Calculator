@@ -6,6 +6,8 @@ const StyledDisplay = styled.div`
   color: white;
   font: 2em bold;
   text-align: end;
+  max-width: 10em;
+  min-width: 10em;
 `;
 
 export default StyledDisplay;
