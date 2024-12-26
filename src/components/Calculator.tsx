@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import Display from './Display';
+import StyledCalculator from './Styles/StyledCalculator';
+import StyledBackground from './Styles/StyledBackground';
 
 const Calculator = () => {
-  const items = [
-    '1', '2', '3', '+',
-    '4', '5', '6', '-',
-    '7', '8', '9', '*',
-    '/', '0',
-  ]
-  const [elems, setElems] = useState<string[]>([]);
+  const items = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '+', '-', '*', '/']
+  const [elems, setElems] = useState<string[]>(['']);
 
   const addElem = (elem : string) => {
     setElems(prevElems => [...prevElems, elem]);
@@ -64,18 +61,16 @@ const Calculator = () => {
   }
 
   return (
-    <div>
+    <StyledBackground>
       <Display elems={elems} />
-      {items.map((item, index) => (
-        <React.Fragment key={index}>
+      <StyledCalculator>
+        {items.map((item, index) => (
           <Button onClick={() => { addElem(item) }} label={ item }/>
-          {(index + 1) % 4 === 0 && index !== items.length - 1 && <br />}
-        </React.Fragment>
-      ))}
-      <br/>
-      <Button onClick={() => { calculate() }} label={ '=' }/>
-      <Button onClick={() => { setElems([]) }} label={ 'C' }/>
-    </div>
+        ))}
+        <Button onClick={() => { calculate() }} label={ '=' }/>
+        <Button onClick={() => { setElems([]) }} label={ 'C' }/>
+      </StyledCalculator>
+    </StyledBackground>
   );
 }
 
